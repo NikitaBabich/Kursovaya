@@ -1,0 +1,32 @@
+﻿<Window x:Class="Kursovaya.Windows.AddCaseWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursovaya.Windows"
+        mc:Ignorable="d"
+        Title="AddCaseWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="2">
+            <TextBlock>Номер дела</TextBlock>
+            <TextBox x:Name="TxtNcase" Text="{Binding Номер_дела}"></TextBox>
+            <TextBlock>Судья</TextBlock>
+            <ComboBox x:Name="CmbJudge" DisplayMemberPath="Title" SelectedItem="{Binding Id_судьи}"></ComboBox>
+            <TextBlock>Пострадавший</TextBlock>
+            <ComboBox x:Name="CmbVictim" DisplayMemberPath="Title" SelectedItem="{Binding Id_пострадавшего}"></ComboBox>
+            <TextBlock>Обвиняемый</TextBlock>
+            <ComboBox x:Name="CmbAccused" DisplayMemberPath="Title" SelectedItem="{Binding Id_обвиняемого}"></ComboBox>
+            <TextBlock>Номер статьи</TextBlock>
+            <TextBox x:Name="TxtArticle" Text="{Binding Номер_статьи}"></TextBox>
+            <TextBlock>Дата открытия дела</TextBlock>
+            <DatePicker SelectedDate="{Binding Дата_открытия_дела}"></DatePicker>
+            <TextBlock>Дата закрытия дела</TextBlock>
+            <DatePicker SelectedDate="{Binding Дата_закрытия_дела}"></DatePicker>
+        </UniformGrid>
+        <Button x:Name="BtnSaveData" Grid.Row="1" Click="BtnSaveData_Click">Добавить</Button>
+    </Grid>
+</Window>
