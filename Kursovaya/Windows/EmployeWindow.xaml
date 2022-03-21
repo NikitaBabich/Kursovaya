@@ -15,7 +15,7 @@
             <Button x:Name="BtnAddData" Content="Добавить запись" Click="BtnAddData_Click"/>
             <Button x:Name="BtnDeleteData" Content="Удалить запись" Click="BtnDeleteData_Click"/>
         </StackPanel>
-        <DataGrid Grid.Row="1" x:Name="DataGridCases" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
+        <DataGrid Grid.Row="1" x:Name="DataGridEmploye" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Фамилия" Binding="{Binding Номер_дела}"/>
                 <DataGridTextColumn Header="Имя" Binding="{Binding Judges.Фамилия}"/>

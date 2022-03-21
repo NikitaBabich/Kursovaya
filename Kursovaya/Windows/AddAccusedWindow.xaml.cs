@@ -19,9 +19,20 @@ namespace Kursovaya.Windows
     /// </summary>
     public partial class AddAccusedWindow : Window
     {
-        public AddAccusedWindow()
+        PoliceEntities context;
+        public AddAccusedWindow(PoliceEntities context, Accused accused)
         {
             InitializeComponent();
+            this.context = context;
+            CmbGender.ItemsSource = context.Genders.ToList();
+            this.DataContext = accused;
+        }
+
+        private void BtnSaveData_Click(object sender, RoutedEventArgs e)
+        {
+            context.SaveChanges();
+            MessageBox.Show("Данные добавлены");
+            this.Close();
         }
     }
 }

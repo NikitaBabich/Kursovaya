@@ -19,9 +19,32 @@ namespace Kursovaya.Windows
     /// </summary>
     public partial class VictimsWindow : Window
     {
+        PoliceEntities context;
+
         public VictimsWindow()
         {
             InitializeComponent();
+            context = new PoliceEntities();
+            ShowTable();
+        }
+        private void ShowTable()
+        {
+            DataGridVictims.ItemsSource = context.Cases.ToList();
+        }
+
+        private void BtnAddData_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDeleteData_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditData_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

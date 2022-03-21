@@ -7,6 +7,24 @@
         mc:Ignorable="d"
         Title="AddAccusedWindow" WindowStartupLocation="CenterScreen" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="2">
+            <TextBlock>Фамилия</TextBlock>
+            <TextBox x:Name="TxtSurname" Text="{Binding Фамилия}"></TextBox>
+            <TextBlock>имя</TextBlock>
+            <TextBox x:Name="Txtname" Text="{Binding Имя}"></TextBox>
+            <TextBlock>Отчество</TextBlock>
+            <TextBox x:Name="TxtPatronomyc" Text="{Binding Отчество}"></TextBox>
+            <TextBlock>Дата рожденя</TextBlock>
+            <DatePicker SelectedDate="{Binding Дата_рождения}"></DatePicker>
+            <TextBlock>Пол</TextBlock>
+            <ComboBox x:Name="CmbGender" DisplayMemberPath="Пол" SelectedItem="{Binding Id}"></ComboBox>
+            <TextBlock>Город</TextBlock>
+            <TextBox x:Name="TxtCity" Text="{Binding Город}"></TextBox>
+        </UniformGrid>
+        <Button x:Name="BtnSaveData" Grid.Row="1" Click="BtnSaveData_Click">Добавить</Button>
     </Grid>
 </Window>

@@ -11,7 +11,6 @@
           <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
           <ScalarProperty Name="Пол" ColumnName="Пол" />
           <ScalarProperty Name="Город" ColumnName="Город" />
-          <ScalarProperty Name="Id_сотрудника" ColumnName="Id_сотрудника" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

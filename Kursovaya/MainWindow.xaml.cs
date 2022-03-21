@@ -29,7 +29,7 @@ namespace Kursovaya
         }
         private void ShowTable()
         {
-            //DataGridCases.ItemsSource = context.Cases.ToList();
+            DataGridCases.ItemsSource = context.Cases.ToList();
         }
 
         private void BtnSelectEmployee_Click(object sender, RoutedEventArgs e)

@@ -16,7 +16,6 @@
           <Property Name="Дата_рождения" Type="date" Nullable="false" />
           <Property Name="Пол" Type="int" Nullable="false" />
           <Property Name="Город" Type="nvarchar" MaxLength="50" />
-          <Property Name="Id_сотрудника" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Cases">
           <Key>
@@ -320,7 +319,6 @@
           <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Пол" Type="Int32" Nullable="false" />
           <Property Name="Город" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Id_сотрудника" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Cases" Relationship="Self.FK_Cases_Accuseds" FromRole="Accuseds" ToRole="Cases" />
           <NavigationProperty Name="Gender" Relationship="Self.FK_Преступники_Пол" FromRole="Accuseds" ToRole="Gender" />
         </EntityType>
@@ -646,7 +644,6 @@
                 <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
                 <ScalarProperty Name="Пол" ColumnName="Пол" />
                 <ScalarProperty Name="Город" ColumnName="Город" />
-                <ScalarProperty Name="Id_сотрудника" ColumnName="Id_сотрудника" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -19,9 +19,31 @@ namespace Kursovaya.Windows
     /// </summary>
     public partial class EmployeWindow : Window
     {
+        PoliceEntities context;
         public EmployeWindow()
         {
             InitializeComponent();
+            context = new PoliceEntities();
+            ShowTable();
+        }
+        private void ShowTable()
+        {
+            DataGridEmploye.ItemsSource = context.Cases.ToList();
+        }
+
+        private void BtnAddData_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDeleteData_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnEditData_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
