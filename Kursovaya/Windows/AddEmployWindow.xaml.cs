@@ -19,9 +19,23 @@ namespace Kursovaya.Windows
     /// </summary>
     public partial class AddEmployWindow : Window
     {
-        public AddEmployWindow()
+        PoliceEntities context;
+        public AddEmployWindow(PoliceEntities context, Employe employe)
         {
             InitializeComponent();
+            this.context = context;
+            CmbGender.ItemsSource = context.Genders.ToList();
+            CmbPost.ItemsSource = context.Posts.ToList();
+            CmbSubsections.ItemsSource = context.Subsections.ToList();
+            CmbTitle.ItemsSource = context.Titles.ToList();
+            this.DataContext = employe;
+        }
+
+        private void BtnSaveData_Click(object sender, RoutedEventArgs e)
+        {
+            context.SaveChanges();
+            MessageBox.Show("Данные добавлены");
+            this.Close();
         }
     }
 }

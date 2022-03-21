@@ -26,24 +26,45 @@ namespace Kursovaya.Windows
             context = new PoliceEntities();
             ShowTable();
         }
+
         private void ShowTable()
         {
-            DataGridEmploye.ItemsSource = context.Cases.ToList();
+            DataGridEmploye.ItemsSource = context.Employes.ToList();
         }
 
         private void BtnAddData_Click(object sender, RoutedEventArgs e)
         {
-
+            var NewZap = new Employe();
+            context.Employes.Add(NewZap);
+            var EditWindow = new Windows.AddEmployWindow(context, NewZap);
+            EditWindow.ShowDialog();
+            ShowTable();
         }
 
         private void BtnDeleteData_Click(object sender, RoutedEventArgs e)
         {
-
+            var currentZap = DataGridEmploye.SelectedItem as Employe;
+            if (currentZap == null)
+            {
+                MessageBox.Show("Выберите строку!");
+                return;
+            }
+            MessageBoxResult messageBoxResult = MessageBox.Show("Вы хотите удалить?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                context.Employes.Remove(currentZap);
+                context.SaveChanges();
+                MessageBox.Show("Данные удалены");
+                ShowTable();
+            }
         }
 
         private void BtnEditData_Click(object sender, RoutedEventArgs e)
         {
-
+            Button BtnEdit = sender as Button;
+            var currentZap = BtnEdit.DataContext as Employe;
+            var EditWindow = new Windows.AddEmployWindow(context, currentZap);
+            EditWindow.ShowDialog();
         }
     }
 }

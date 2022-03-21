@@ -19,9 +19,20 @@ namespace Kursovaya.Windows
     /// </summary>
     public partial class AddVictimWindow : Window
     {
-        public AddVictimWindow()
+        PoliceEntities context;
+        public AddVictimWindow(PoliceEntities context, Victim victim)
         {
             InitializeComponent();
+            this.context = context;
+            CmbGender.ItemsSource = context.Genders.ToList();
+            this.DataContext = victim;
+        }
+
+        private void BtnSaveData_Click(object sender, RoutedEventArgs e)
+        {
+            context.SaveChanges();
+            MessageBox.Show("Данные добавлены");
+            this.Close();
         }
     }
 }

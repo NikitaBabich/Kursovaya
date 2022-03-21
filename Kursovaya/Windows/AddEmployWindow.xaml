@@ -7,6 +7,30 @@
         mc:Ignorable="d"
         Title="AddEmployWindow" WindowStartupLocation="CenterScreen" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="70"></RowDefinition>
+        </Grid.RowDefinitions>
+        <UniformGrid Columns="2">
+            <TextBlock>Фамилия</TextBlock>
+            <TextBox x:Name="TxtSurname" Text="{Binding Фамилия}"></TextBox>
+            <TextBlock>Имя</TextBlock>
+            <TextBox x:Name="TxtName" Text="{Binding Имя}"></TextBox>
+            <TextBlock>Отчество</TextBlock>
+            <TextBox x:Name="TxtPatronomyc" Text="{Binding Отчество}"></TextBox>
+            <TextBlock>Возраст</TextBlock>
+            <TextBox x:Name="TxtAge" Text="{Binding Возраст}"></TextBox>
+            <TextBlock>Пол</TextBlock>
+            <ComboBox x:Name="CmbGender" DisplayMemberPath="Пол" SelectedItem="{Binding Пол}"></ComboBox>
+            <TextBlock>Стаж</TextBlock>
+            <TextBox x:Name="TxtExpirience" Text="{Binding Стаж}"></TextBox>
+            <TextBlock>Подразделение</TextBlock>
+            <ComboBox x:Name="CmbSubsections" DisplayMemberPath="Подразделение" SelectedItem="{Binding Id_подразделения}"></ComboBox>
+            <TextBlock>Должность</TextBlock>
+            <ComboBox x:Name="CmbPost" DisplayMemberPath="Должность" SelectedItem="{Binding Id_должности}"></ComboBox>
+            <TextBlock>Звание</TextBlock>
+            <ComboBox x:Name="CmbTitle" DisplayMemberPath="Звание" SelectedItem="{Binding Id_звания}"></ComboBox>
+        </UniformGrid>
+        <Button x:Name="BtnSaveData" Grid.Row="1" Click="BtnSaveData_Click">Добавить</Button>
     </Grid>
 </Window>
