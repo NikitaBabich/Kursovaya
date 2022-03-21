@@ -31,11 +31,11 @@ namespace Kursovaya
         public Nullable<int> Код_должности { get; set; }
         public int Код_звания { get; set; }
     
+        public virtual Gender Gender { get; set; }
         public virtual Post Post { get; set; }
+        public virtual Subsection Subsection { get; set; }
+        public virtual Title Title { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<EmployeVictim> EmployeVictims { get; set; }
-        public virtual Title Title { get; set; }
-        public virtual Subsection Subsection { get; set; }
-        public virtual Gender Gender { get; set; }
     }
 }

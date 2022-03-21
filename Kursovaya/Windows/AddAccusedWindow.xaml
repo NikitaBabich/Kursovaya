@@ -14,14 +14,14 @@
         <UniformGrid Columns="2">
             <TextBlock>Фамилия</TextBlock>
             <TextBox x:Name="TxtSurname" Text="{Binding Фамилия}"></TextBox>
-            <TextBlock>имя</TextBlock>
+            <TextBlock>Имя</TextBlock>
             <TextBox x:Name="Txtname" Text="{Binding Имя}"></TextBox>
             <TextBlock>Отчество</TextBlock>
             <TextBox x:Name="TxtPatronomyc" Text="{Binding Отчество}"></TextBox>
             <TextBlock>Дата рожденя</TextBlock>
             <DatePicker SelectedDate="{Binding Дата_рождения}"></DatePicker>
             <TextBlock>Пол</TextBlock>
-            <ComboBox x:Name="CmbGender" DisplayMemberPath="Пол" SelectedItem="{Binding Id}"></ComboBox>
+            <ComboBox x:Name="CmbGender" DisplayMemberPath="Пол" SelectedItem="{Binding Пол}"></ComboBox>
             <TextBlock>Город</TextBlock>
             <TextBox x:Name="TxtCity" Text="{Binding Город}"></TextBox>
         </UniformGrid>

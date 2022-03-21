@@ -17,12 +17,12 @@
         </StackPanel>
         <DataGrid Grid.Row="1" x:Name="DataGridAccused" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Фамилия" Binding="{Binding Номер_дела}"/>
-                <DataGridTextColumn Header="Имя" Binding="{Binding Judges.Фамилия}"/>
-                <DataGridTextColumn Header="Отчество" Binding="{Binding EmployeVictim.Id_пострадавшего}"/>
-                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Accuseds.Фамилия}"/>
-                <DataGridTextColumn Header="Пол" Binding="{Binding Номер_статьи}"/>
-                <DataGridTextColumn Header="Город" Binding="{Binding Дата_открытия_дела}"/>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding Фамилия}"/>
+                <DataGridTextColumn Header="Имя" Binding="{Binding Имя}"/>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding Отчество}"/>
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Дата_рождения}"/>
+                <DataGridTextColumn Header="Пол" Binding="{Binding Gender.Пол}"/>
+                <DataGridTextColumn Header="Город" Binding="{Binding Город}"/>
                 <DataGridTemplateColumn Header="Редактировать">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

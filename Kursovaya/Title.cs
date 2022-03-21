@@ -21,8 +21,8 @@ namespace Kursovaya
         }
     
         public int Id { get; set; }
-        public decimal Звание { get; set; }
-        public string Надбавка { get; set; }
+        public string Звание { get; set; }
+        public Nullable<decimal> Надбавка { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employe> Employes { get; set; }

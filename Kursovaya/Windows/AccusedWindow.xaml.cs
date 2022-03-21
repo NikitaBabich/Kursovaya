@@ -29,7 +29,7 @@ namespace Kursovaya.Windows
 
         private void ShowTable()
         {
-            DataGridAccused.ItemsSource = context.Cases.ToList();
+            DataGridAccused.ItemsSource = context.Accuseds.ToList();
         }
 
         private void BtnAddData_Click(object sender, RoutedEventArgs e)
