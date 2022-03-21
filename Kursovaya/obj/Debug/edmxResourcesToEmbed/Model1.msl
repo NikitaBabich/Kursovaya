@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище PoliceModelContainer" CdmEntityContainer="PoliceEntities">
+    <EntitySetMapping Name="Accuseds">
+      <EntityTypeMapping TypeName="PoliceModel.Accused">
+        <MappingFragment StoreEntitySet="Accuseds">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+          <ScalarProperty Name="Город" ColumnName="Город" />
+          <ScalarProperty Name="Id_сотрудника" ColumnName="Id_сотрудника" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cases">
+      <EntityTypeMapping TypeName="PoliceModel.Case">
+        <MappingFragment StoreEntitySet="Cases">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Номер_дела" ColumnName="Номер_дела" />
+          <ScalarProperty Name="Id_судьи" ColumnName="Id_судьи" />
+          <ScalarProperty Name="Id_пострадавшего" ColumnName="Id_пострадавшего" />
+          <ScalarProperty Name="Id_обвиняемого" ColumnName="Id_обвиняемого" />
+          <ScalarProperty Name="Номер_статьи" ColumnName="Номер_статьи" />
+          <ScalarProperty Name="Дата_открытия_дела" ColumnName="Дата_открытия_дела" />
+          <ScalarProperty Name="Дата_закрытия_дела" ColumnName="Дата_закрытия_дела" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employes">
+      <EntityTypeMapping TypeName="PoliceModel.Employe">
+        <MappingFragment StoreEntitySet="Employes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Возраст" ColumnName="Возраст" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+          <ScalarProperty Name="Стаж" ColumnName="Стаж" />
+          <ScalarProperty Name="Код_подразделения" ColumnName="Код_подразделения" />
+          <ScalarProperty Name="Код_звания" ColumnName="Код_звания" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Genders">
+      <EntityTypeMapping TypeName="PoliceModel.Gender">
+        <MappingFragment StoreEntitySet="Gender">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Judges">
+      <EntityTypeMapping TypeName="PoliceModel.Judge">
+        <MappingFragment StoreEntitySet="Judges">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Стаж" ColumnName="Стаж" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subsections">
+      <EntityTypeMapping TypeName="PoliceModel.Subsection">
+        <MappingFragment StoreEntitySet="Subsections">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Подразделение" ColumnName="Подразделение" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="PoliceModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Titles">
+      <EntityTypeMapping TypeName="PoliceModel.Title">
+        <MappingFragment StoreEntitySet="Title">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Звание" ColumnName="Звание" />
+          <ScalarProperty Name="Надбавка" ColumnName="Надбавка" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Victims">
+      <EntityTypeMapping TypeName="PoliceModel.Victim">
+        <MappingFragment StoreEntitySet="Victims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Дата_рождения" ColumnName="Дата_рождения" />
+          <ScalarProperty Name="Пол" ColumnName="Пол" />
+          <ScalarProperty Name="Город" ColumnName="Город" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

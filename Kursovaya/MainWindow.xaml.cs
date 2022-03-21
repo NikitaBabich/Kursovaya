@@ -24,35 +24,63 @@ namespace Kursovaya
         {
             InitializeComponent();
         }
+        private void ShowTable()
+        {
+            //DataGridCases.ItemsSource = context.Cases.ToList();
+        }
 
         private void BtnSelectEmployee_Click(object sender, RoutedEventArgs e)
         {
-
+            var EmplyeList = new Windows.EmployeWindow();
+            EmplyeList.ShowDialog();
         }
 
         private void BtnSelectVictim_Click(object sender, RoutedEventArgs e)
         {
-
+            var VictimList = new Windows.VictimsWindow();
+            VictimList.ShowDialog();
         }
 
         private void BtnSelectAccused_Click(object sender, RoutedEventArgs e)
         {
+            var AccusedList = new Windows.AccusedWindow();
+            AccusedList.ShowDialog();
 
         }
 
         private void BtnAddData_Click(object sender, RoutedEventArgs e)
         {
-
+            //var NewZap = new Case();
+            //context.Cases.Add(NewZap);
+            var EditWindow = new Windows.AddCaseWindow();
+            EditWindow.ShowDialog();
+            ShowTable();
         }
 
         private void BtnDeleteData_Click(object sender, RoutedEventArgs e)
         {
-
+            var currentZap = DataGridCases.SelectedItem as //Cases;
+            if (currentZap == null)
+            {
+                MessageBox.Show("Выберите строку!");
+                return;
+            }
+            MessageBoxResult messageBoxResult = MessageBox.Show("Вы хотите удалить?", "Удаление", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                context.Cases.Remove(currentZap);
+                context.SaveChanges();
+                MessageBox.Show("Данные удалены");
+                ShowTable();
+            }
         }
 
         private void BtnEditData_Click(object sender, RoutedEventArgs e)
         {
-
+            Button BtnEdit = sender as Button;
+            var currentZap = BtnEdit.DataContext as Cases;
+            var EditWindow = new Windows.AddCaseWindow(context, currentZap);
+            EditWindow.ShowDialog();
         }
     }
 }

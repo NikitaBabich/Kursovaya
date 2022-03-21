@@ -19,9 +19,9 @@
         <DataGrid Grid.Row="1" x:Name="DataGridCases" ColumnWidth="*" AutoGenerateColumns="False" IsReadOnly="True" SelectionMode="Single">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер дела" Binding="{Binding Номер_дела}"/>
-                <DataGridTextColumn Header="Судья" Binding="{Binding Судьи.Фамилия}"/>
-                <DataGridTextColumn Header="Пострадавший" Binding="{Binding Пострадавшие.Фамилия}"/>
-                <DataGridTextColumn Header="Обвиняемый" Binding="{Binding Обвиняемые.Фамилия}"/>
+                <DataGridTextColumn Header="Судья" Binding="{Binding Judges.Фамилия}"/>
+                <DataGridTextColumn Header="Пострадавший" Binding="{Binding EmployeVictim.Id_пострадавшего}"/>
+                <DataGridTextColumn Header="Обвиняемый" Binding="{Binding Accuseds.Фамилия}"/>
                 <DataGridTextColumn Header="Номер статьи" Binding="{Binding Номер_статьи}"/>
                 <DataGridTextColumn Header="Дата открытия дела" Binding="{Binding Дата_открытия_дела}"/>
                 <DataGridTextColumn Header="Дата закрытия дела" Binding="{Binding Дата_закрытия_дела}"/>

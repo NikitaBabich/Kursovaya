@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PoliceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Accused">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Пол" Type="Int32" Nullable="false" />
+    <Property Name="Город" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Id_сотрудника" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cases" Relationship="Self.FK_Дела_Обвиняемые" FromRole="Accuseds" ToRole="Cases" />
+    <NavigationProperty Name="Gender" Relationship="Self.FK_Преступники_Пол" FromRole="Accuseds" ToRole="Gender" />
+    <NavigationProperty Name="Employe" Relationship="Self.FK_Преступники_Сотрудники" FromRole="Accuseds" ToRole="Employes" />
+  </EntityType>
+  <EntityType Name="Case">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Номер_дела" Type="Int32" Nullable="false" />
+    <Property Name="Id_судьи" Type="Int32" Nullable="false" />
+    <Property Name="Id_пострадавшего" Type="Int32" Nullable="false" />
+    <Property Name="Id_обвиняемого" Type="Int32" Nullable="false" />
+    <Property Name="Номер_статьи" Type="Int32" Nullable="false" />
+    <Property Name="Дата_открытия_дела" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Дата_закрытия_дела" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Accused" Relationship="Self.FK_Дела_Обвиняемые" FromRole="Cases" ToRole="Accuseds" />
+    <NavigationProperty Name="Victim" Relationship="Self.FK_Дела_Пострадавшие" FromRole="Cases" ToRole="Victims" />
+    <NavigationProperty Name="Judge" Relationship="Self.FK_Дела_Судьи1" FromRole="Cases" ToRole="Judges" />
+  </EntityType>
+  <EntityType Name="Employe">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Возраст" Type="Int32" Nullable="false" />
+    <Property Name="Пол" Type="Int32" Nullable="false" />
+    <Property Name="Стаж" Type="Int32" Nullable="false" />
+    <Property Name="Код_подразделения" Type="Int32" Nullable="false" />
+    <Property Name="Код_звания" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Accuseds" Relationship="Self.FK_Преступники_Сотрудники" FromRole="Employes" ToRole="Accuseds" />
+    <NavigationProperty Name="Title" Relationship="Self.FK_Сотрудники_Звания" FromRole="Employes" ToRole="Title" />
+    <NavigationProperty Name="Subsection" Relationship="Self.FK_Сотрудники_Подразделения" FromRole="Employes" ToRole="Subsections" />
+    <NavigationProperty Name="Gender" Relationship="Self.FK_Сотрудники_Пол" FromRole="Employes" ToRole="Gender" />
+  </EntityType>
+  <EntityType Name="Gender">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Пол" Type="String" MaxLength="3" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Accuseds" Relationship="Self.FK_Преступники_Пол" FromRole="Gender" ToRole="Accuseds" />
+    <NavigationProperty Name="Employes" Relationship="Self.FK_Сотрудники_Пол" FromRole="Gender" ToRole="Employes" />
+    <NavigationProperty Name="Victims" Relationship="Self.FK_Пострадавшие_Пол" FromRole="Gender" ToRole="Victims" />
+  </EntityType>
+  <EntityType Name="Judge">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Стаж" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cases" Relationship="Self.FK_Дела_Судьи1" FromRole="Judges" ToRole="Cases" />
+  </EntityType>
+  <EntityType Name="Subsection">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Подразделение" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Employes" Relationship="Self.FK_Сотрудники_Подразделения" FromRole="Subsections" ToRole="Employes" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Title">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Звание" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Надбавка" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Employes" Relationship="Self.FK_Сотрудники_Звания" FromRole="Title" ToRole="Employes" />
+  </EntityType>
+  <EntityType Name="Victim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Дата_рождения" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Пол" Type="Int32" Nullable="false" />
+    <Property Name="Город" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Cases" Relationship="Self.FK_Дела_Пострадавшие" FromRole="Victims" ToRole="Cases" />
+    <NavigationProperty Name="Gender" Relationship="Self.FK_Пострадавшие_Пол" FromRole="Victims" ToRole="Gender" />
+  </EntityType>
+  <Association Name="FK_Дела_Обвиняемые">
+    <End Role="Accuseds" Type="Self.Accused" Multiplicity="1" />
+    <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Accuseds">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cases">
+        <PropertyRef Name="Id_обвиняемого" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Преступники_Пол">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Accuseds" Type="Self.Accused" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Accuseds">
+        <PropertyRef Name="Пол" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Преступники_Сотрудники">
+    <End Role="Employes" Type="Self.Employe" Multiplicity="1" />
+    <End Role="Accuseds" Type="Self.Accused" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Accuseds">
+        <PropertyRef Name="Id_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Дела_Пострадавшие">
+    <End Role="Victims" Type="Self.Victim" Multiplicity="1" />
+    <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Victims">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cases">
+        <PropertyRef Name="Id_пострадавшего" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Дела_Судьи1">
+    <End Role="Judges" Type="Self.Judge" Multiplicity="1" />
+    <End Role="Cases" Type="Self.Case" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Judges">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cases">
+        <PropertyRef Name="Id_судьи" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Сотрудники_Звания">
+    <End Role="Title" Type="Self.Title" Multiplicity="1" />
+    <End Role="Employes" Type="Self.Employe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Title">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employes">
+        <PropertyRef Name="Код_звания" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Сотрудники_Подразделения">
+    <End Role="Subsections" Type="Self.Subsection" Multiplicity="1" />
+    <End Role="Employes" Type="Self.Employe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subsections">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employes">
+        <PropertyRef Name="Код_звания" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Сотрудники_Пол">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Employes" Type="Self.Employe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employes">
+        <PropertyRef Name="Пол" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Пострадавшие_Пол">
+    <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
+    <End Role="Victims" Type="Self.Victim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gender">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Victims">
+        <PropertyRef Name="Пол" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PoliceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accuseds" EntityType="Self.Accused" />
+    <EntitySet Name="Cases" EntityType="Self.Case" />
+    <EntitySet Name="Employes" EntityType="Self.Employe" />
+    <EntitySet Name="Genders" EntityType="Self.Gender" />
+    <EntitySet Name="Judges" EntityType="Self.Judge" />
+    <EntitySet Name="Subsections" EntityType="Self.Subsection" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Titles" EntityType="Self.Title" />
+    <EntitySet Name="Victims" EntityType="Self.Victim" />
+    <AssociationSet Name="FK_Дела_Обвиняемые" Association="Self.FK_Дела_Обвиняемые">
+      <End Role="Accuseds" EntitySet="Accuseds" />
+      <End Role="Cases" EntitySet="Cases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Преступники_Пол" Association="Self.FK_Преступники_Пол">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="Accuseds" EntitySet="Accuseds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Преступники_Сотрудники" Association="Self.FK_Преступники_Сотрудники">
+      <End Role="Employes" EntitySet="Employes" />
+      <End Role="Accuseds" EntitySet="Accuseds" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Дела_Пострадавшие" Association="Self.FK_Дела_Пострадавшие">
+      <End Role="Victims" EntitySet="Victims" />
+      <End Role="Cases" EntitySet="Cases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Дела_Судьи1" Association="Self.FK_Дела_Судьи1">
+      <End Role="Judges" EntitySet="Judges" />
+      <End Role="Cases" EntitySet="Cases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Сотрудники_Звания" Association="Self.FK_Сотрудники_Звания">
+      <End Role="Title" EntitySet="Titles" />
+      <End Role="Employes" EntitySet="Employes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Сотрудники_Подразделения" Association="Self.FK_Сотрудники_Подразделения">
+      <End Role="Subsections" EntitySet="Subsections" />
+      <End Role="Employes" EntitySet="Employes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Сотрудники_Пол" Association="Self.FK_Сотрудники_Пол">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="Employes" EntitySet="Employes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Пострадавшие_Пол" Association="Self.FK_Пострадавшие_Пол">
+      <End Role="Gender" EntitySet="Genders" />
+      <End Role="Victims" EntitySet="Victims" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

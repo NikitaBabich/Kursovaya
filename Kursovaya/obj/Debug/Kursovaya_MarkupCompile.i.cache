@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Папка\Kursovaya\Kursovaya\obj\Debug\
+d:\users\ta12415\Desktop\Kursovaya\Kursovaya\obj\Debug\
 Kursovaya
 none
 false
 DEBUG;TRACE
-D:\Папка\Kursovaya\Kursovaya\App.xaml
-6-360049
-21750853300
-23-1902083963
-16-192073432
-MainWindow.xaml;Windows\AddCaseWindow.xaml;Windows\AddRmployWindow.xaml;Windows\AddVictimWindow.xaml;Windows\EmployeWindow.xaml;Windows\VictimsWindow.xaml;
+d:\users\ta12415\Desktop\Kursovaya\Kursovaya\App.xaml
+8-1701365254
+
+131985909530
+16-1420049114
+MainWindow.xaml;Windows\AccusedWindow.xaml;Windows\AddAccusedWindow.xaml;Windows\AddCaseWindow.xaml;Windows\AddEmployWindow.xaml;Windows\AddVictimWindow.xaml;Windows\EmployeWindow.xaml;Windows\VictimsWindow.xaml;
 
 True
 

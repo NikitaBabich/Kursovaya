@@ -19,22 +19,21 @@ namespace Kursovaya.Windows
     /// </summary>
     public partial class AddCaseWindow : Window
     {
-        PoliceEntities context;
-        public AddCaseWindow(PoliceEntities context)
+        public AddCaseWindow()
         {
             InitializeComponent();
-            this.context = context;
-            CmbJudge.ItemsSource = context.Judges.ToList();
-            CmbAccused.ItemsSource = context.Accuseds.ToList();
-            CmbVictim.ItemsSource = context.Victims.ToList();
+            //this.context = context;
+            //CmbJudge.ItemsSource = context.Judges.ToList();
+            //CmbAccused.ItemsSource = context.Accuseds.ToList();
+            //CmbVictim.ItemsSource = context.Victims.ToList();
             //this.DataContext = case;
         }
 
         private void BtnSaveData_Click(object sender, RoutedEventArgs e)
         {
-            context.SaveChanges();
-            MessageBox.Show("Данные добавлены");
-            this.Close();
+            //context.SaveChanges();
+            //MessageBox.Show("Данные добавлены");
+            //this.Close();
         }
     }
 }

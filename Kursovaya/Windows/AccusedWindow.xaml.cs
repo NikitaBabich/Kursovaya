@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Kursovaya.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для AddRmployWindow.xaml
+    /// Логика взаимодействия для AccusedWindow.xaml
     /// </summary>
-    public partial class AddRmployWindow : Window
+    public partial class AccusedWindow : Window
     {
-        public AddRmployWindow()
+        public AccusedWindow()
         {
             InitializeComponent();
         }
