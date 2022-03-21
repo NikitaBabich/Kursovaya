@@ -35,3 +35,8 @@ d:\users\ta12415\Desktop\Kursovaya\Kursovaya\obj\Debug\Kursovaya.csproj.CoreComp
 d:\users\ta12415\Desktop\Kursovaya\Kursovaya\obj\Debug\Kursovaya.exe
 d:\users\ta12415\Desktop\Kursovaya\Kursovaya\obj\Debug\Kursovaya.pdb
 d:\users\ta12415\Desktop\Kursovaya\Kursovaya\obj\Debug\Kursovaya_Content.g.cs
+d:\users\ta12415\Desktop\Kursovaya\Kursovaya\bin\Debug\EntityFramework.dll
+d:\users\ta12415\Desktop\Kursovaya\Kursovaya\bin\Debug\EntityFramework.SqlServer.dll
+d:\users\ta12415\Desktop\Kursovaya\Kursovaya\bin\Debug\EntityFramework.xml
+d:\users\ta12415\Desktop\Kursovaya\Kursovaya\bin\Debug\EntityFramework.SqlServer.xml
+d:\users\ta12415\Desktop\Kursovaya\Kursovaya\obj\Debug\Kursovaya.csproj.CopyComplete
