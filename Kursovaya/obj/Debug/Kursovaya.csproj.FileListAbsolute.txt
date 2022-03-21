@@ -34,3 +34,4 @@ d:\users\ta12415\Desktop\Kursovaya\Kursovaya\obj\Debug\Kursovaya.csproj.Generate
 d:\users\ta12415\Desktop\Kursovaya\Kursovaya\obj\Debug\Kursovaya.csproj.CoreCompileInputs.cache
 d:\users\ta12415\Desktop\Kursovaya\Kursovaya\obj\Debug\Kursovaya.exe
 d:\users\ta12415\Desktop\Kursovaya\Kursovaya\obj\Debug\Kursovaya.pdb
+d:\users\ta12415\Desktop\Kursovaya\Kursovaya\obj\Debug\Kursovaya_Content.g.cs

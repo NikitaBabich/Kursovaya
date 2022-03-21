@@ -40,7 +40,17 @@
           <ScalarProperty Name="Пол" ColumnName="Пол" />
           <ScalarProperty Name="Стаж" ColumnName="Стаж" />
           <ScalarProperty Name="Код_подразделения" ColumnName="Код_подразделения" />
+          <ScalarProperty Name="Код_должности" ColumnName="Код_должности" />
           <ScalarProperty Name="Код_звания" ColumnName="Код_звания" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeVictims">
+      <EntityTypeMapping TypeName="PoliceModel.EmployeVictim">
+        <MappingFragment StoreEntitySet="EmployeVictim">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_пострадавшнго" ColumnName="Id_пострадавшнго" />
+          <ScalarProperty Name="Id_сотрудника" ColumnName="Id_сотрудника" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -60,6 +70,14 @@
           <ScalarProperty Name="Имя" ColumnName="Имя" />
           <ScalarProperty Name="Отчество" ColumnName="Отчество" />
           <ScalarProperty Name="Стаж" ColumnName="Стаж" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Posts">
+      <EntityTypeMapping TypeName="PoliceModel.Post">
+        <MappingFragment StoreEntitySet="Post">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Должность" ColumnName="Должность" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

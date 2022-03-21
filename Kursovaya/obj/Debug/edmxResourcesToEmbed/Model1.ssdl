@@ -38,7 +38,16 @@
     <Property Name="Пол" Type="int" Nullable="false" />
     <Property Name="Стаж" Type="int" Nullable="false" />
     <Property Name="Код_подразделения" Type="int" Nullable="false" />
+    <Property Name="Код_должности" Type="int" />
     <Property Name="Код_звания" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EmployeVictim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_пострадавшнго" Type="int" />
+    <Property Name="Id_сотрудника" Type="int" />
   </EntityType>
   <EntityType Name="Gender">
     <Key>
@@ -56,6 +65,13 @@
     <Property Name="Имя" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
     <Property Name="Стаж" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Должность" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Subsections">
     <Key>
@@ -94,7 +110,7 @@
     <Property Name="Пол" Type="int" Nullable="false" />
     <Property Name="Город" Type="nvarchar" MaxLength="50" />
   </EntityType>
-  <Association Name="FK_Дела_Обвиняемые">
+  <Association Name="FK_Cases_Accuseds">
     <End Role="Accuseds" Type="Self.Accuseds" Multiplicity="1" />
     <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
     <ReferentialConstraint>
@@ -106,15 +122,51 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Дела_Пострадавшие">
-    <End Role="Victims" Type="Self.Victims" Multiplicity="1" />
+  <Association Name="FK_Cases_EmployeVictim">
+    <End Role="EmployeVictim" Type="Self.EmployeVictim" Multiplicity="1" />
     <End Role="Cases" Type="Self.Cases" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Victims">
+      <Principal Role="EmployeVictim">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="Cases">
         <PropertyRef Name="Id_пострадавшего" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Employes_Post">
+    <End Role="Post" Type="Self.Post" Multiplicity="0..1" />
+    <End Role="Employes" Type="Self.Employes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employes">
+        <PropertyRef Name="Код_должности" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeVictim_Employes">
+    <End Role="Employes" Type="Self.Employes" Multiplicity="0..1" />
+    <End Role="EmployeVictim" Type="Self.EmployeVictim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employes">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeVictim">
+        <PropertyRef Name="Id_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeVictim_Victims">
+    <End Role="Victims" Type="Self.Victims" Multiplicity="0..1" />
+    <End Role="EmployeVictim" Type="Self.EmployeVictim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Victims">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeVictim">
+        <PropertyRef Name="Id_пострадавшнго" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -151,18 +203,6 @@
       </Principal>
       <Dependent Role="Accuseds">
         <PropertyRef Name="Пол" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Преступники_Сотрудники">
-    <End Role="Employes" Type="Self.Employes" Multiplicity="1" />
-    <End Role="Accuseds" Type="Self.Accuseds" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Employes">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Accuseds">
-        <PropertyRef Name="Id_сотрудника" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -206,19 +246,33 @@
     <EntitySet Name="Accuseds" EntityType="Self.Accuseds" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cases" EntityType="Self.Cases" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Employes" EntityType="Self.Employes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EmployeVictim" EntityType="Self.EmployeVictim" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Gender" EntityType="Self.Gender" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Judges" EntityType="Self.Judges" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Subsections" EntityType="Self.Subsections" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Title" EntityType="Self.Title" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Victims" EntityType="Self.Victims" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK_Дела_Обвиняемые" Association="Self.FK_Дела_Обвиняемые">
+    <AssociationSet Name="FK_Cases_Accuseds" Association="Self.FK_Cases_Accuseds">
       <End Role="Accuseds" EntitySet="Accuseds" />
       <End Role="Cases" EntitySet="Cases" />
     </AssociationSet>
-    <AssociationSet Name="FK_Дела_Пострадавшие" Association="Self.FK_Дела_Пострадавшие">
-      <End Role="Victims" EntitySet="Victims" />
+    <AssociationSet Name="FK_Cases_EmployeVictim" Association="Self.FK_Cases_EmployeVictim">
+      <End Role="EmployeVictim" EntitySet="EmployeVictim" />
       <End Role="Cases" EntitySet="Cases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Employes_Post" Association="Self.FK_Employes_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Employes" EntitySet="Employes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeVictim_Employes" Association="Self.FK_EmployeVictim_Employes">
+      <End Role="Employes" EntitySet="Employes" />
+      <End Role="EmployeVictim" EntitySet="EmployeVictim" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeVictim_Victims" Association="Self.FK_EmployeVictim_Victims">
+      <End Role="Victims" EntitySet="Victims" />
+      <End Role="EmployeVictim" EntitySet="EmployeVictim" />
     </AssociationSet>
     <AssociationSet Name="FK_Дела_Судьи1" Association="Self.FK_Дела_Судьи1">
       <End Role="Judges" EntitySet="Judges" />
@@ -230,10 +284,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_Преступники_Пол" Association="Self.FK_Преступники_Пол">
       <End Role="Gender" EntitySet="Gender" />
-      <End Role="Accuseds" EntitySet="Accuseds" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Преступники_Сотрудники" Association="Self.FK_Преступники_Сотрудники">
-      <End Role="Employes" EntitySet="Employes" />
       <End Role="Accuseds" EntitySet="Accuseds" />
     </AssociationSet>
     <AssociationSet Name="FK_Сотрудники_Звания" Association="Self.FK_Сотрудники_Звания">

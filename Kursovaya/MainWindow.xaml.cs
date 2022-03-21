@@ -20,9 +20,12 @@ namespace Kursovaya
     /// </summary>
     public partial class MainWindow : Window
     {
+        PoliceEntities context;
         public MainWindow()
         {
             InitializeComponent();
+            context = new PoliceEntities();
+            ShowTable();
         }
         private void ShowTable()
         {
@@ -50,16 +53,16 @@ namespace Kursovaya
 
         private void BtnAddData_Click(object sender, RoutedEventArgs e)
         {
-            //var NewZap = new Case();
-            //context.Cases.Add(NewZap);
-            var EditWindow = new Windows.AddCaseWindow();
+            var NewZap = new Case();
+            context.Cases.Add(NewZap);
+            var EditWindow = new Windows.AddCaseWindow(context, NewZap);
             EditWindow.ShowDialog();
             ShowTable();
         }
 
         private void BtnDeleteData_Click(object sender, RoutedEventArgs e)
         {
-            var currentZap = DataGridCases.SelectedItem as //Cases;
+            var currentZap = DataGridCases.SelectedItem as Case;
             if (currentZap == null)
             {
                 MessageBox.Show("Выберите строку!");
@@ -78,7 +81,7 @@ namespace Kursovaya
         private void BtnEditData_Click(object sender, RoutedEventArgs e)
         {
             Button BtnEdit = sender as Button;
-            var currentZap = BtnEdit.DataContext as Cases;
+            var currentZap = BtnEdit.DataContext as Case;
             var EditWindow = new Windows.AddCaseWindow(context, currentZap);
             EditWindow.ShowDialog();
         }
